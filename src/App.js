@@ -23,8 +23,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Events, { loader as events } from "./pages/Events";
-import EventDetail from "./pages/EventDetail";
-import NewEvent from "./pages/NewEvent";
+import EventDetail, { loader as eventsDetails } from "./pages/EventDetail";
+import NewEvent, {action as eventsAction} from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import Root from "./pages/Root";
 import SecendaryRoot from "./pages/SecendaryRoot";
@@ -44,9 +44,13 @@ function App() {
           element: <SecendaryRoot />,
           children: [
             { index: true, element: <Events />, loader: events },
-            { path: ':eventId', element: <EventDetail /> },
-            { path: 'new', element: <NewEvent /> },
-            { path: ':eventId/edit', element: <EditEvent /> }
+            {
+              path: ':eventId', loader: eventsDetails, id: 'eventDetails', children: [
+                { index: true, element: <EventDetail /> },
+                { path: 'edit', element: <EditEvent /> }
+              ]
+            },
+            { path: 'new', element: <NewEvent />, action: eventsAction },
           ]
         }
       ]
