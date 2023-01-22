@@ -5,8 +5,10 @@ import MainNavigation from '../components/MainNavigation'
 const Root = () => {
   return (
     <>
-        <MainNavigation />
+      <MainNavigation />
+      <main>
         <Outlet />
+      </main>
     </>
   )
 }
