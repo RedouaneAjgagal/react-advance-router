@@ -8,7 +8,6 @@ const NewEvent = () => {
 export default NewEvent
 
 export const action = async ({ request, params }) => {
-  console.log(params);
   const data = await request.formData();
   const eventsData = {
     title: data.get('title'),
@@ -22,7 +21,7 @@ export const action = async ({ request, params }) => {
     body: JSON.stringify(eventsData)
   });
   if (!response.ok) {
-    throw json({ errorMsg: "Couldn't Post An Event.." }, { status: 500 });
+    return response;
   }
   return redirect(`/events`);
 
