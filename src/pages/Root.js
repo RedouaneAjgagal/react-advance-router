@@ -6,7 +6,7 @@ const Root = () => {
   return (
     <>
       <MainNavigation />
-      <main>
+      <main style={{display: 'flex', justifyContent: 'center'}}>
         <Outlet />
       </main>
     </>

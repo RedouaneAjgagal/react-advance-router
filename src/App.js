@@ -30,6 +30,7 @@ import Root from "./pages/Root";
 import SecendaryRoot from "./pages/SecendaryRoot";
 import Error from "./pages/Error";
 import { action as eventActions } from "./components/EventForm";
+import Newsletter, { action as signupToNewsletter } from "./pages/Newsletter";
 
 function App() {
 
@@ -53,7 +54,8 @@ function App() {
             },
             { path: 'new', element: <NewEvent />, action: eventActions },
           ]
-        }
+        },
+        { path: 'newsletter', element: <Newsletter />, action: signupToNewsletter }
       ]
     },
 

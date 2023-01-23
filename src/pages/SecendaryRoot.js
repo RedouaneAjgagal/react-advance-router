@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom'
 
 const SecendaryRoot = () => {
   return (
-    <div>
-        <EventsNavigation />
-        <Outlet />
+    <div style={{ width: '100%' }}>
+      <EventsNavigation />
+      <Outlet />
     </div>
   )
 }
