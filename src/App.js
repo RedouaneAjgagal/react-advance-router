@@ -24,11 +24,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Events, { loader as events } from "./pages/Events";
 import EventDetail, { loader as eventsDetails, action as deleteEvent } from "./pages/EventDetail";
-import NewEvent, {action as eventsAction} from "./pages/NewEvent";
+import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import Root from "./pages/Root";
 import SecendaryRoot from "./pages/SecendaryRoot";
 import Error from "./pages/Error";
+import { action as eventActions } from "./components/EventForm";
 
 function App() {
 
@@ -47,10 +48,10 @@ function App() {
             {
               path: ':eventId', loader: eventsDetails, id: 'eventDetails', children: [
                 { index: true, element: <EventDetail />, action: deleteEvent },
-                { path: 'edit', element: <EditEvent /> }
+                { path: 'edit', element: <EditEvent />, action: eventActions }
               ]
             },
-            { path: 'new', element: <NewEvent />, action: eventsAction },
+            { path: 'new', element: <NewEvent />, action: eventActions },
           ]
         }
       ]
