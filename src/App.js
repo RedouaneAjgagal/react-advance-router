@@ -23,7 +23,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Events, { loader as events } from "./pages/Events";
-import EventDetail, { loader as eventsDetails } from "./pages/EventDetail";
+import EventDetail, { loader as eventsDetails, action as deleteEvent } from "./pages/EventDetail";
 import NewEvent, {action as eventsAction} from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import Root from "./pages/Root";
@@ -46,7 +46,7 @@ function App() {
             { index: true, element: <Events />, loader: events },
             {
               path: ':eventId', loader: eventsDetails, id: 'eventDetails', children: [
-                { index: true, element: <EventDetail /> },
+                { index: true, element: <EventDetail />, action: deleteEvent },
                 { path: 'edit', element: <EditEvent /> }
               ]
             },
