@@ -27,7 +27,7 @@ import EventDetail, { loader as eventsDetails, action as deleteEvent } from "./p
 import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import Root from "./pages/Root";
-import SecendaryRoot from "./pages/SecendaryRoot";
+import EventsRoot from "./pages/EventsRoot";
 import Error from "./pages/Error";
 import { action as eventActions } from "./components/EventForm";
 import Newsletter, { action as signupToNewsletter } from "./pages/Newsletter";
@@ -43,7 +43,7 @@ function App() {
         { index: true, element: <Home /> },
         {
           path: 'events',
-          element: <SecendaryRoot />,
+          element: <EventsRoot />,
           children: [
             { index: true, element: <Events />, loader: events },
             {
