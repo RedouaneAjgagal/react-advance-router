@@ -9,7 +9,7 @@ import EventsRoot from "./pages/EventsRoot";
 import Error from "./pages/Error";
 import { action as eventActions } from "./components/EventForm";
 import Newsletter, { action as signupToNewsletter } from "./pages/Newsletter";
-import Authentication from "./pages/Authentication";
+import Authentication, {action as authAction} from "./pages/Authentication";
 
 function App() {
 
@@ -35,7 +35,7 @@ function App() {
           ]
         },
         { path: 'newsletter', element: <Newsletter />, action: signupToNewsletter },
-        { path: 'auth', element: <Authentication /> }
+        { path: 'auth', element: <Authentication />, action: authAction }
       ]
     },
 
