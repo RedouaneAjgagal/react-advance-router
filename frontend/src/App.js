@@ -11,7 +11,7 @@ import { action as eventActions } from "./components/EventForm";
 import Newsletter, { action as signupToNewsletter } from "./pages/Newsletter";
 import Authentication, {action as authAction} from "./pages/Authentication";
 import { action as logoutAction } from "./pages/logout";
-import { tokenLoader } from "./util/Auth";
+import { tokenLoader, checkAuthLoader } from "./util/Auth";
 
 function App() {
 
@@ -32,10 +32,10 @@ function App() {
             {
               path: ':eventId', loader: eventsDetails, id: 'eventDetails', children: [
                 { index: true, element: <EventDetail />, action: deleteEvent },
-                { path: 'edit', element: <EditEvent />, action: eventActions }
+                { path: 'edit', element: <EditEvent />, action: eventActions, loader: checkAuthLoader }
               ]
             },
-            { path: 'new', element: <NewEvent />, action: eventActions },
+            { path: 'new', element: <NewEvent />, action: eventActions, loader: checkAuthLoader },
           ]
         },
         { path: 'newsletter', element: <Newsletter />, action: signupToNewsletter },
