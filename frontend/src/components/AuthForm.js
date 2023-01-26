@@ -9,11 +9,13 @@ function AuthForm() {
   const { state } = useNavigation();
   const data = useActionData();
   const isSubmitting = state === 'submitting';
-  const showErrors = data?.errors ? <ul>{Object.values(data.errors).map(error => <li key={error}>{error}</li>)}</ul> : null;
+  const showErrorsList = data?.errors ? <ul>{Object.values(data.errors).map(error => <li key={error}>{error}</li>)}</ul> : null;
+  const errorMsg = data?.message ? data.message : null
   return (
     <>
       <Form method="post" className={classes.form}>
-        {showErrors}
+        {showErrorsList}
+        {errorMsg}
         <h1>{isLogin ? 'Log in' : 'Create a new user'}</h1>
         <p>
           <label htmlFor="email">Email</label>

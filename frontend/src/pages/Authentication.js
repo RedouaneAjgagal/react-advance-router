@@ -26,5 +26,10 @@ export const action = async ({ request }) => {
   });
   if (response.status === 401 || response.status === 422) return response;
   if (!response.ok) throw json({ errorMsg: "Couldn't Submit Form Values" }, { status: 500 });
+
+  const responseData = await response.json();
+  const token = responseData.token;
+  localStorage.setItem('token', token);
+
   return redirect('/')
 }
