@@ -10,14 +10,18 @@ import Error from "./pages/Error";
 import { action as eventActions } from "./components/EventForm";
 import Newsletter, { action as signupToNewsletter } from "./pages/Newsletter";
 import Authentication, {action as authAction} from "./pages/Authentication";
+import { action as logoutAction } from "./pages/logout";
+import { tokenLoader } from "./util/Auth";
 
 function App() {
 
   const router = createBrowserRouter([
     {
       path: '/',
+      id: 'root',
       element: <Root />,
       errorElement: <Error />,
+      loader: tokenLoader,
       children: [
         { index: true, element: <Home /> },
         {
@@ -35,7 +39,8 @@ function App() {
           ]
         },
         { path: 'newsletter', element: <Newsletter />, action: signupToNewsletter },
-        { path: 'auth', element: <Authentication />, action: authAction }
+        { path: 'auth', element: <Authentication />, action: authAction },
+        { path: 'logout', action: logoutAction}
       ]
     },
 
