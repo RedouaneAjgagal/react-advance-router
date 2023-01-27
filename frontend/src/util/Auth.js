@@ -12,7 +12,6 @@ export const getToken = () => {
     const token = localStorage.getItem('token');
     if (!token) return null;
     const experationTime = checkExpiration();
-    console.log(experationTime);
     if (experationTime < 0) return 'EXPIRED';
     return token;
 }
