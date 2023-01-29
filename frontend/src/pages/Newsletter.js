@@ -16,7 +16,7 @@ export const action = async ({ request }) => {
   const response = await request.formData();
   const email = response.get('email');
   const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-  if (!validEmail.test(email)) return {errorMsg: 'Invalid Email'}
+  if (!validEmail.test(email)) return { message: 'Invalid Email'}
   // send data to the back end
   return { message: 'signup successfull!', email }
 }
