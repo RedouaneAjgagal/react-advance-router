@@ -5,3 +5,6 @@ export const action = () => {
     localStorage.removeItem('expiration');
     return redirect('/');
 }
+export const loader = () => {
+    return action();
+}
